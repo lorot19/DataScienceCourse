@@ -58,30 +58,54 @@ We used following command to answer our question:
 It looks like proportion of individuals are more over same with 59% (label 1) of females and 40% (label 0) of males
 
 ## Question 3
-Analyse
-Visualise
-Explain the visualisation
+**What is the proportion of individuals according to the age?**
+
+We used following command to answer our question:
+```python
+(data['Age'].value_counts()/data.shape[0]).plot(kind="bar")
+```
+
+![Screen Shot 2022-02-04 at 13 24 58](https://user-images.githubusercontent.com/29026461/152528713-ae82e680-df30-4ea3-8588-6613cab2b6e6.png)
+
+Dataset is based mainly on data from young people between 18 and 22 years
+
+## Question 4
+**How many of individuals have smoking experience?**
+
+We used following command to answer our question:
+```python
+(data['SmokingExperience'].value_counts()/data.shape[0]).plot(kind="bar")
+```
+![Screen Shot 2022-02-04 at 13 26 25](https://user-images.githubusercontent.com/29026461/152528891-15b124f8-b977-405d-a395-db0e29c1e28d.png)
+
+Interesting is that at least 80% of young people has smoking experience. (label 1 means that individuals have smoking experience)
+
+## Question 5
+**How many of individuals have alcohol experience?**
+
+We used following command to answer our question:
+```python
+(data['AlcoholExperience'].value_counts()/data.shape[0]).plot(kind="bar")
+```
+
+![Screen Shot 2022-02-04 at 13 28 56](https://user-images.githubusercontent.com/29026461/152529192-fc0f72d6-b84e-4402-b25b-f651990ff767.png)
+
+Almost 88% of individuals has some Alcohol experience. (label 1 means that individuals have drinking experience)
+
+## Question 6
+**When young people starsts with alcohol?**
+
+We used following command to answer our question:
+```python
+(data.groupby('Age').mean()['AlcoholExperience'].sort_values()).plot(kind="bar")
+```
+
+![Screen Shot 2022-02-04 at 13 31 20](https://user-images.githubusercontent.com/29026461/152529543-489ab795-f9c3-469d-83df-94d7134704ea.png)
+
+It looks like 44% of young individuals starts with alcohol at age 15 while 100% have some experince at 28years
 
 ## Evaluation
-Findings
-
-
-
-# DataScienceCourse
-Project dedicated for DataScience course. 
-
-## Project 1
-
-
-This part is related to the first project within Data Science course.
-
-
-## Dataset
-
-
-## Corelation Table
-
-
+It looks like there are some corelations between bad habits and music preferencies which means that even our public Spotify playlist should be protected and considered as private data. Please find more findings in that article: https://medium.com/@tomas.lorinc/what-music-youre-listing-tells-about-your-bad-habits-and-why-you-should-protect-your-playlists-bbf6ab5bd35f
 
 ## How to run code
 Please clone repositar including datasets and run Project1.ipynb inside your Jupyter Lab.
@@ -93,3 +117,5 @@ Source code is dependant on following modules:
 * matplotlib
 * scikit
 * seaborn
+
+
