@@ -1,10 +1,28 @@
+Table of contents:
+1. [ Project 1](#project1)
+  * [ Business Understanding ](#project1BU)
+  * [ Data Understanding ](#project1DU)
+  * [ Data Preparation ](#project1DP)
+  * [ Data Modeling ](#project1DM)
+  * [ Q1: What interesting corelation is between bad habbits and music preferencies? ](#project1Q1)
+  * [ Q2: What is the proportion of individuals according to the gender? ](#project1Q2)
+  * [ Q3: What is the proportion of individuals according to the age? ](#project1Q3)
+  * [ Q4: How many of individuals have smoking experience? ](#project1Q4)
+  * [ Q5: How many of individuals have alcohol experience? ](#project1Q5)
+  * [ Q6: When young people starsts with alcohol? ](#project1Q6)
+  * [ Evaluation ](#project1E)
+  * [ How to run code ](#project1RC)
+
+
+
+<a name="project1"></a>
 # Project 1: Write a data science blog post
 
+<a name="project1BU"></a>
 ## Business Understanding
 Purpose of first project was practice work with dataset in Jupyter notebook. 
 
 For someone listening too much music could be one of bad habit but what if I told you that I can guess if you are drinker, smoker or if you are cheating in school just by your music preferencies? I belive that now you checked your Spotify account what do you have in public playlists but dont worry and lets see what we really know about you.
-
 
 Question 1: What interesting corelation is between bad habbits and music preferencies?
 Question 2: What is the proportion of individuals according to the gender?
@@ -13,22 +31,26 @@ Question 4: How many of individuals have smoking experience?
 Question 5: How many of individuals have alcohol experience?
 Question 6: When young people starsts with alcohol?
 
+<a name="project1DU"></a>
 ## Data Understanding
 Our dataset “Young People Surve” is from kaggle https://www.kaggle.com/miroslavsabo/young-people-survey and contains answers to questionnaire were collected by students of Statistics class at FSEV UK in Slovakia were they was asked to invite their friends to participate in this survey.
 Dataset contains at least 150 unique columns with questions focusen on demographic, music and movies preferencies, bad habbits and other personality related questions asked 1010 individuals.
 
 We selected only part of the dataset and focused on relationship between bad habits like drinking, cheating or smoking and music preferencies. Let's see what we found.
 
-## Prepare Data
+<a name="project1DP"></a>
+## Data Preparation
 In this project following techniques are used:
 * NaN drop
 * Data imputation with mean
 * Creating subset
 * Corelation analysis
 
+<a name="project1DM"></a>
 ## Modeling(optional)
 not used in this project
 
+<a name="project1Q1"></a>
 ## Question 1
 **What interesting corelation is between bad habbits and music preferencies?**
 
@@ -45,6 +67,7 @@ There are multiple findings about corelation between bad habits like Smoking or 
 
 To see more detailed findings please see article published on medium.com https://medium.com/@tomas.lorinc/what-music-youre-listing-tells-about-your-bad-habits-and-why-you-should-protect-your-playlists-bbf6ab5bd35f
 
+<a name="project1Q2"></a>
 ## Question 2
 **What is the proportion of individuals according to the gender?**
 
@@ -57,6 +80,7 @@ We used following command to answer our question:
 
 It looks like proportion of individuals are more over same with 59% (label 1) of females and 40% (label 0) of males
 
+<a name="project1Q3"></a>
 ## Question 3
 **What is the proportion of individuals according to the age?**
 
@@ -69,6 +93,7 @@ We used following command to answer our question:
 
 Dataset is based mainly on data from young people between 18 and 22 years
 
+<a name="project1Q4"></a>
 ## Question 4
 **How many of individuals have smoking experience?**
 
@@ -80,6 +105,7 @@ We used following command to answer our question:
 
 Interesting is that at least 80% of young people has smoking experience. (label 1 means that individuals have smoking experience)
 
+<a name="project1Q5"></a>
 ## Question 5
 **How many of individuals have alcohol experience?**
 
@@ -92,6 +118,7 @@ We used following command to answer our question:
 
 Almost 88% of individuals has some Alcohol experience. (label 1 means that individuals have drinking experience)
 
+<a name="project1Q6"></a>
 ## Question 6
 **When young people starsts with alcohol?**
 
@@ -104,9 +131,11 @@ We used following command to answer our question:
 
 It looks like 44% of young individuals starts with alcohol at age 15 while 100% have some experince at 28years
 
+<a name="project1E"></a>
 ## Evaluation
 It looks like there are some corelations between bad habits and music preferencies which means that even our public Spotify playlist should be protected and considered as private data. Please find more findings in that article: https://medium.com/@tomas.lorinc/what-music-youre-listing-tells-about-your-bad-habits-and-why-you-should-protect-your-playlists-bbf6ab5bd35f
 
+<a name="project1RC"></a>
 ## How to run code
 Please clone repositar including datasets and run Project1.ipynb inside your Jupyter Lab.
 
