@@ -118,4 +118,6 @@ Source code is dependant on following modules:
 * scikit
 * seaborn
 
+URL to github project: https://github.com/lorot19/DataScienceCourse
+
 
