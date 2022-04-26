@@ -1,16 +1,56 @@
+# -----------------------------------------------------------
+# This file is part of DataScience Project 2
+# Main purpose is process ETL pipeline
+# 2022
+# License: N/A
+# GitHub: lorot19
+# -----------------------------------------------------------
+
+
+# import libraries
 import sys
+import pandas as pd
+from sqlalchemy import create_engine
+
 
 
 def load_data(messages_filepath, categories_filepath):
-    pass
+    # load both datasets
+    messages = pd.read_csv(messages_filepath)
+    categories = pd.read_csv(categories_filepath)
+
+    # merge datasets
+    df = pd.merge(messages, categories, on='id')
+    return df
 
 
 def clean_data(df):
-    pass
+    # create a dataframe of the 36 individual category columns
+    categories = df['categories'].str.split(";", expand=True)
+
+    # select the first row of the categories dataframe
+    category_colnames = pd.DataFrame()
+    for col in categories.iloc[0]:
+        category_colnames[(col.split('-', 1)[0])] = (col.split('-', 1)[1])
+
+    # rename original categories column names with extracted ones
+    categories.columns = category_colnames.columns.values
+
+    # drop the original categories column from `df
+    df.drop('categories', axis=1, inplace=True)
+
+    # clean data in all cells
+    categories = categories.applymap(lambda x: x.split('-', 1)[1]).astype(int)
+
+    # concatenate the original dataframe with the new `categories` dataframe
+    df = df.merge(categories, left_index=True, right_index=True, how='inner')
+    df = df.drop_duplicates()
+    return df
 
 
 def save_data(df, database_filename):
-    pass  
+    engine = create_engine('sqlite:///InsertDatabaseName.db')
+    df.to_sql(database_filename, engine, index=False)
 
 
 def main():
