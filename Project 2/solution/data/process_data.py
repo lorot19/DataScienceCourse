@@ -45,12 +45,13 @@ def clean_data(df):
     # concatenate the original dataframe with the new `categories` dataframe
     df = df.merge(categories, left_index=True, right_index=True, how='inner')
     df = df.drop_duplicates()
+    df.related.replace(2, 1, inplace=True)
     return df
 
 
 def save_data(df, database_filename):
-    engine = create_engine('sqlite:///InsertDatabaseName.db')
-    df.to_sql(database_filename, engine, index=False)
+    engine = create_engine('sqlite:///' + database_filename)
+    df.to_sql('df', engine, index=False, if_exists='replace')
 
 
 def main():
