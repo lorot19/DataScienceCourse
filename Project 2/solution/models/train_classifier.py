@@ -76,24 +76,49 @@ def tokenize(text):
 
 
 def build_model():
+    """
+    This function prepares model using pipeline and gridsearch
+    :return: cv: initialised model
+    """
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('Tfidf', TfidfTransformer()),
         ('clf', MultiOutputClassifier(RandomForestClassifier()))])
     parameters = {'clf__estimator__n_estimators': [3]}
-    #parameters = {'clf__estimator__n_neighbors': [4, 6]}
 
-    #'clf__estimator__max_depth': [10, 20]
+    """
+    better parameters but takes longer
+    parameters = {
+                    'clf__estimator__n_neighbors': [4, 6],
+                    'clf__estimator__max_depth': [10, 20]
+                    }
+    """
+
     cv = GridSearchCV(pipeline, param_grid=parameters, verbose=3, n_jobs=-1)
     return cv
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    """
+    This function evaluate model, runs prediction and displays results
+    :param model: initialised model
+    :param X_test: Any
+    :param Y_test: Any
+    :param category_names: list of cathegory names
+    :return: none
+    """
     y_pred = model.predict(X_test)
     display_results(model, Y_test, y_pred, category_names)
+    pass
 
 
 def save_model(model, model_filepath):
+    """
+    This function saves trained model as pickle file
+    :param model: trained model
+    :param model_filepath: path to save
+    :return: none
+    """
     # save
     with open(model_filepath, 'wb') as f:
         pickle.dump(model, f)
@@ -101,12 +126,26 @@ def save_model(model, model_filepath):
 
 
 def display_results(cv, y_test, y_pred, labels):
+    """
+    This function visualise trained model
+    :param cv: Any
+    :param y_test: Any
+    :param y_pred: Any
+    :param labels: Any
+    :return: none
+    """
     accuracy = (y_pred == y_test).mean()
     print("Labels:", labels)
     print("Accuracy:", accuracy)
     print("\nBest Parameters:", cv.best_params_)
+    pass
+
 
 def main():
+    """
+    Main function of train classifier
+    :return:
+    """
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
@@ -132,6 +171,7 @@ def main():
               'as the first argument and the filepath of the pickle file to '
               'save the model to as the second argument. \n\nExample: python '
               'train_classifier.py ../data/DisasterResponse.db classifier.pkl')
+    pass
 
 
 if __name__ == '__main__':
