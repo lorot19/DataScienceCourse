@@ -17,7 +17,6 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
@@ -86,11 +85,8 @@ def save_model(model, model_filepath):
 
 
 def display_results(cv, y_test, y_pred, labels):
-    #confusion_mat = confusion_matrix(y_test, y_pred, labels=labels)
     accuracy = (y_pred == y_test).mean()
-
     print("Labels:", labels)
-    #print("Confusion Matrix:\n", confusion_mat)
     print("Accuracy:", accuracy)
     print("\nBest Parameters:", cv.best_params_)
 
