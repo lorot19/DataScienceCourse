@@ -30,18 +30,34 @@ nltk.download(['punkt', 'wordnet', 'omw-1.4'])
 url_regex = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
 
 
-def load_data(database_filepath):
+def load_data(database_filepath, table_name='df'):
+    """
+    This function loads SQL db provided as argument of function and returns three objects with dropped
+    noncathegorical columns
+    :param database_filepath: path to the SQL DB
+    :param table_name: name of table inside DB
+
+    :return: X: list of all messages
+    :return: y: list of all columns with catheghorical variables
+    :return: categories: list of all messages
+    """
     engine = create_engine('sqlite:///' + database_filepath)
-    df = pd.read_sql_table('df', engine)
+    df = pd.read_sql_table(table_name, engine)
     X = df['message']
     y = df[df.columns].drop(['id', 'message', 'original', 'genre'], axis = 1)
     #y = df[df.columns[4:]]
 
     y = y.astype(int)
-    return X, y, y.columns
+    categories = y.columns
+    return X, y, categories
 
 
 def tokenize(text):
+    """
+    Function which tokenize message using regular expressions
+    :param text: String containing message
+    :return: clean_tokens: list of words containing tokenized and cleaned message
+    """
     # get list of all urls using regex
     detected_urls = re.findall(url_regex, text)
     # replace each url in text string with placeholder
