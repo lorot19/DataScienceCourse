@@ -43,6 +43,9 @@ def index():
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
 
+    related_counts = df.groupby('request').count()['related']
+    request_names = list(genre_counts.index)
+
     message_counts = df[df.columns].drop(['id', 'message', 'original', 'genre', 'related'], axis = 1).value_counts()
     message_names = list(df[df.columns].drop(['id', 'message', 'original', 'genre','related'], axis = 1))
 
@@ -67,6 +70,24 @@ def index():
                 },
                 'xaxis': {
                     'title': "Genre"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=request_names,
+                    y=related_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Message requests',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Requests"
                 }
             }
         },

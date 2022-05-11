@@ -49,6 +49,8 @@ Please clone repository, install dependencies and run following commands:
 
     python3 models/train_classifier.py data/DisasterResponse.db classifier.pkl 
 
+    python3 app/run.py        
+
 Source code is dependant on following modules:
 
 * numpy
