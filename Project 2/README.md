@@ -7,6 +7,8 @@ Table of contents:
   * [ Data Understanding ](#project2DU)
   * [ How to run code ](#project2RC)
 
+![Screenshot 2022-05-11 at 10 49 49](https://user-images.githubusercontent.com/29026461/167809715-a54d73ba-1333-4fed-87cd-7acfff87dadc.png)
+![Screenshot 2022-05-11 at 10 49 42](https://user-images.githubusercontent.com/29026461/167809789-df6264db-67f3-4aa4-9668-fad0ea85225b.png)
 
 
 <a name="project2"></a>
