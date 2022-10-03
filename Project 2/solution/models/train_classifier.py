@@ -4,6 +4,7 @@
 # 2022
 # License: N/A
 # GitHub: lorot19
+# python3 models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
 # -----------------------------------------------------------
 
 

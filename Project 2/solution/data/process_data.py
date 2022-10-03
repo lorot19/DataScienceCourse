@@ -4,6 +4,7 @@
 # 2022
 # License: N/A
 # GitHub: lorot19
+# python3 data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
 # -----------------------------------------------------------
 
 
