@@ -1,13 +1,11 @@
-import json
-import plotly
 import pandas as pd
 
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
 from flask import Flask
-from flask import render_template, request, jsonify
-from plotly.graph_objs import Bar
+from flask import render_template, request
+
 import joblib
 from sqlalchemy import create_engine
 
@@ -32,7 +30,7 @@ def tokenize(text):
 
 # load data
 engine = create_engine('sqlite:///moviesdata.db')
-df = pd.read_sql_table('name', engine)
+df = pd.read_sql_table('name', con=engine)
 
 # load model
 model = joblib.load("netflix_model.pkl")
@@ -40,17 +38,12 @@ model = joblib.load("netflix_model.pkl")
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
-@app.route('/index')
 def index():
-    """
-    FLASK: index request
-    :return:
-    """
-    
+    return render_template(
+    'master.html'
+    )
 
 
-
-# web page that handles user query and displays model results
 @app.route('/go')
 def go():
     """
