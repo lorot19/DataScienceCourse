@@ -1,8 +1,9 @@
 # Data Science Course - Capstone project - Movie name clasifier
+![Screenshot 2022-10-05 at 12 46 13](https://user-images.githubusercontent.com/29026461/194042878-dbe0fc01-f9a0-47e8-b451-572cd41c2a5a.png)
 
-#Section 1: Project Definition
+# Section 1: Project Definition
 
-##Project Overview:
+## Project Overview:
 Imagine life without IMDb, Netflix, HBO Max and other streaming platforms where you can 
 find all information about specific movie like story, actors and even filter them using 
 genres categories. Imagine that someone tells you just movie name without trailer or movie
@@ -10,9 +11,11 @@ pictures and you need to decide if you would like to see that movie or not. Exac
 that purpose is our service. Doesnt matter if you are watcher or movie producer you can 
 type any movie name and our service will try to predict what movie geners suits best to it.
 
-##Problem Statement: 
+Dataset source: https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies/
 
-Problem definition: Predict one or more movie categories from user provided string (Movie name)
+## Problem Statement: 
+
+**Problem definition: Predict one or more movie categories from user provided string (Movie name)**
 
 Strategy: 
 1. Find suitable and valid datasource for training dataset
@@ -23,7 +26,7 @@ Strategy:
 6. Develop simple web application providing problem solution using trained model and other techniques
 7. Deploy web application to the cloud provider architecture 
 
-##Metrics: 
+## Metrics: 
 
 Most straightforward way to test our solution will be manual test using known movie 
 name which is not presented in both training and testing dataset. Using jsut few movie names
@@ -34,27 +37,29 @@ using larger independent dataset provided from different source.
 Second validation will be using accuracy score on top of our test-train dataset. Accuracy
 should be sufficient because our problem is quite simple and straightforward.
 
-#Section 2: Analysis
+# Section 2: Analysis
 
-##Data Exploration: 
+## Data Exploration: 
 Dataset was checked using standard data exploration techniques. We checked size, shape
 and proportion of our dataset as well as NaN drop/imputation
 
-##Data Visualisation: 
+## Data Visualisation: 
 Our dataset is quite simple so there was not high demand to plot unnecessary graphs however
 we were interested in proportion of movie geners after data dataset cleanup. We used standard
 techniques and plotly library.
 
-#Section 3: Methodology
+![Screenshot 2022-10-05 at 12 49 17](https://user-images.githubusercontent.com/29026461/194043418-6425c361-7ba7-447e-962f-92b784b0a09d.png)
 
-##Data Preprocessing: 
+# Section 3: Methodology
+
+## Data Preprocessing: 
 Please see provided jupyter notebooks where every step is commented.
-##Implementation: 
+## Implementation: 
 Please see provided jupyter notebooks where every step is commented.
-##Refinement: 
+## Refinement: 
 Training parameters were tuned using manual tests and accuracy score.
 
-#Section 4: Results
+# Section 4: Results
 Fully working public web aplication deployed using CI/CD pipeline to the heroku cloud.
 
 You can find it on this URL: https://movie-name-clasifier.herokuapp.com
@@ -62,7 +67,21 @@ You can find it on this URL: https://movie-name-clasifier.herokuapp.com
 Its running on free tier so please be patien. First page load could take few seconds as
 heroku needs to wake up our instance if there was no activity for more than 30 minutes.
 
-#Section 5: Conclusion
+We were surprised that our prediction is prety confident. For example if you type movie with name:
+
+**django unchained** which is not in the datased you wil get geners **Drama** and **Wester** which is prety good performance https://www.imdb.com/title/tt1853728/
+![Screenshot 2022-10-05 at 12 51 46](https://user-images.githubusercontent.com/29026461/194044016-e82ce2c3-14de-42ba-8844-2fcc3b3e66a1.png)
+
+Or if we try nonexisting movie like: **"Little pony on vacation"** we have result: **Drama** and **Animation**. However if we slightly change same movie name to the similiar **"Little pony"** our result will be **Animation** and **Family** which makes sence beacause every vacation has little bit of drama :)
+
+![Screenshot 2022-10-05 at 12 56 17](https://user-images.githubusercontent.com/29026461/194046080-582f1588-3b3a-4e3b-a7b5-2bb4b6c2cf1c.png)
+
+![Screenshot 2022-10-05 at 12 56 52](https://user-images.githubusercontent.com/29026461/194046090-442c1c9b-a458-4b77-82aa-a72c343d7d30.png)
+
+
+
+
+# Section 5: Conclusion
 ## Reflection
 First of all I am really satisfied that I finished this final projects. When I started 
 DS course I had no experience from data science, data analysis and data engineering. 
@@ -78,7 +97,7 @@ Finally I solved all issues and now you can enjoy my work from public internet.
 2. Improve proportion of movie categories inside datased as currently used dataset is little bit biased.
 3. Improve model evaluation and tune training parameters
 4. Improve UX/UI experience on web application
-#How to run code
+# How to run code
 
 Application is hosted publicly on this url: https://movie-name-clasifier.herokuapp.com
 
