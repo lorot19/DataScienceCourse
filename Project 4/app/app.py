@@ -1,5 +1,5 @@
 import pandas as pd
-
+import pickle
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
@@ -34,7 +34,7 @@ engine = create_engine('sqlite:///moviesdata.db')
 df = pd.read_sql_table('name', con=engine)
 
 # load model
-model = joblib.load("netflix_model.pkl")
+model = pickle.load("../../../../DataScienceCourse-capstone-project/netflix_model.pkl")
 
 
 # index webpage displays cool visuals and receives user input text for model
@@ -72,7 +72,7 @@ def main():
     :return:
     """
     port = int(os.environ.get("PORT", 3001))
-    app.run(host='0.0.0.0', port=port, debug=False)
+    app.run(host='0.0.0.0', port=port, debug=True)
 
 
 if __name__ == '__main__':
