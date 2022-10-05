@@ -1,13 +1,14 @@
 import pandas as pd
-
+import pickle
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
 from flask import Flask
 from flask import render_template, request
-
+import sklearn
 import joblib
 from sqlalchemy import create_engine
+import os
 
 
 app = Flask(__name__)
@@ -33,7 +34,7 @@ engine = create_engine('sqlite:///moviesdata.db')
 df = pd.read_sql_table('name', con=engine)
 
 # load model
-model = joblib.load("netflix_model.pkl")
+model = pickle.load("../../../../DataScienceCourse-capstone-project/netflix_model.pkl")
 
 
 # index webpage displays cool visuals and receives user input text for model
@@ -70,7 +71,8 @@ def main():
     Main function
     :return:
     """
-    app.run(host='0.0.0.0', port=3001, debug=True)
+    port = int(os.environ.get("PORT", 3001))
+    app.run(host='0.0.0.0', port=port, debug=True)
 
 
 if __name__ == '__main__':
